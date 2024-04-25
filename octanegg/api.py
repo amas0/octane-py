@@ -118,6 +118,13 @@ class Octane:
         result = self._get_results(endpoint)
         return result
 
+        #Returns the active roster of any team using the team id
+    def get_players_by_team_id(self, team_id: str) -> list:
+        endpoint = f'{API_BASE_URL}/players'
+        params = {'team': team_id}
+        result = self._get_results(endpoint, params).get('players')
+        return result
+
     def get_teams(self, name: Optional[str] = None, sort: Optional[str] = None,
                   order: Optional[str] = None, page: Optional[int] = None,
                   per_page: Optional[int] = 100) -> list:
